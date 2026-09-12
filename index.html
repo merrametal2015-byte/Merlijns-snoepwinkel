@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Merlijn's Snoepwinkel 🍬</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fff0f5;
+    margin: 0;
+    text-align: center;
+}
+
+header {
+    background-color: #ff4f9a;
+    color: white;
+    padding: 25px;
+}
+
+h1 {
+    margin: 0;
+}
+
+.snoep-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+}
+
+.snoep {
+    background: white;
+    width: 220px;
+    margin: 15px;
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0px 3px 10px gray;
+}
+
+.snoep img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+button {
+    background-color: #ff4f9a;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #d9367b;
+}
+
+#winkelmand {
+    background: white;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+input {
+    padding: 10px;
+    margin: 5px;
+    width: 200px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>🍬 Merlijn's Snoepwinkel 🍭</h1>
+    <p>Het lekkerste snoep!</p>
+</header>
+
+<div class="snoep-container">
+
+    <div class="snoep">
+        <img src="https://images.unsplash.com/photo-1582058091505-f87a2e55a40f">
+        <h2>Gekleurde snoepjes</h2>
+        <p>€2,50</p>
+        <button onclick="toevoegen('Gekleurde snoepjes')">
+            Toevoegen 🛒
+        </button>
+    </div>
+
+    <div class="snoep">
+        <img src="https://images.unsplash.com/photo-1575377427642-087cf684f29d">
+        <h2>Gummies</h2>
+        <p>€3,00</p>
+        <button onclick="toevoegen('Gummies')">
+            Toevoegen 🛒
+        </button>
+    </div>
+<div class="snoep">
+    <img src="lollie.jpg">
+    <h2>Lollie</h2>
+    <p>€1,00</p>
+    <button>Toevoegen</button>
+</div>
+
+</div>
+
+<div id="winkelmand">
+    <h2>🛒 Mijn winkelmandje</h2>
+
+    <ul id="lijst"></ul>
+
+    <h3>Bestellen</h3>
+
+    <input id="naam" placeholder="Je naam"><br>
+    <input id="woonplaats" placeholder="Je woonplaats"><br>
+
+    <button onclick="bestellen()">
+        Bestelling versturen
+    </button>
+
+</div>
+
+<script>
+
+let mandje = [];
+
+function toevoegen(snoep) {
+
+    mandje.push(snoep);
+
+    let lijst = document.getElementById("lijst");
+
+    lijst.innerHTML = "";
+
+    mandje.forEach(function(item) {
+
+        let li = document.createElement("li");
+
+        li.innerText = item;
+
+        lijst.appendChild(li);
+
+    });
+
+}
+
+function bestellen() {
+
+    let naam = document.getElementById("naam").value;
+    let woonplaats = document.getElementById("woonplaats").value;
+
+    if (naam == "" || woonplaats == "") {
+
+        alert("Vul je naam en woonplaats in!");
+
+        return;
+
+    }
+
+    alert(
+        "Bedankt voor je bestelling, " +
+        naam +
+        "! 🍬"
+    );
+
+    console.log("BESTELLING");
+    console.log("Naam:", naam);
+    console.log("Woonplaats:", woonplaats);
+    console.log("Snoep:", mandje);
+
+}
+
+</script>
+
+</body>
+</html>
